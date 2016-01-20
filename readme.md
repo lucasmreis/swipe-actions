@@ -1,3 +1,5 @@
-Experiments for a swipe up / down action component.
+# SwipeActions
 
-Example: https://rnplay.org/apps/KG2GRA
+React Native for firing actions based on swipe gestures.
+
+[Imgur](http://i.imgur.com/5rRYBCG.gifv)

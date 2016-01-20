@@ -32,3 +32,9 @@ local.properties
 #
 node_modules/
 npm-debug.log
+
+# react native
+index.android.js
+index.ios.js
+android/
+ios/

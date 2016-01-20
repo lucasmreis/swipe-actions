@@ -1,0 +1,13 @@
+{
+  "ecmaVersion": 6,
+  "libs": [],
+  "loadEagerly": [
+    "js/**/*.js",
+    "index.android.js",
+    "index.ios.js"
+  ],
+  "plugins": {
+    "modules": {},
+    "es_modules": {}
+  }
+}

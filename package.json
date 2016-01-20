@@ -1,11 +1,26 @@
 {
-  "name": "swipeExp",
+  "name": "swipe-actions",
+  "author": "Lucas Reis",
+  "keywords": [
+    "react",
+    "react-component",
+    "actions",
+    "swipe",
+    "gestures"
+  ],
   "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start"
+  "main": "index.js",
+  "description": "React Native component for firing actions based on swipe gestures.",
+  "peerDependencies": {
+    "react-native": "^>=0.14.0"
   },
-  "dependencies": {
-    "react-native": "^0.18.0-rc"
-  }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucasmreis/swipe-actions.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lucasmreis/swipe-actions/issues"
+  },
+  "homepage": "https://github.com/lucasmreis/swipe-actions#readme",
+  "license": "MIT"
 }

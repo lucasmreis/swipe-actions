@@ -7,7 +7,7 @@ import React, {
   Dimensions
 } from 'react-native';
 
-import { between } from '../util';
+import { between } from './util';
 
 const Window = Dimensions.get('window');
 

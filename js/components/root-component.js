@@ -6,7 +6,7 @@ import React, {
   StyleSheet
 } from 'react-native';
 
-import SwipeActions from './swipe-actions';
+import SwipeActions from '../swipe-actions';
 
 const styles = StyleSheet.create({
   actionsText: {

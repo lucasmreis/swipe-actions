@@ -60,7 +60,11 @@ let SwipeExp = React.createClass({
     });
   },
   renderUpperAction: function() {
-    const s = [styles.actions, {top: this.state.upperActionTop}];
+    const s = [styles.actions, {
+      top: this.state.upperActionTop.interpolate({
+        inputRange:  [-MAX_Y, 0, MAX_Y],
+        outputRange: [-MAX_Y, -(MAX_Y / 2), MAX_Y],
+      })}];
   	return <Animated.View style={s}>
       <Text style={styles.actionsText}>
         Upper Action
@@ -68,7 +72,13 @@ let SwipeExp = React.createClass({
     </Animated.View>;
 	},
   renderLowerAction: function() {
-    const s = [styles.actions, {top: this.state.lowerActionTop}];
+    const heightPluxMax = Window.height + MAX_Y;
+    const heightLessMax = Window.height - MAX_Y;
+    const s = [styles.actions, {
+      top: this.state.lowerActionTop.interpolate({
+        inputRange:  [heightLessMax, Window.height, heightPluxMax],
+        outputRange: [heightLessMax, Window.height + (MAX_Y / 2), heightPluxMax],
+      })}];
   	return <Animated.View style={s}>
       <Text style={styles.actionsText}>
         Lower Action

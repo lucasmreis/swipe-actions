@@ -2,4 +2,4 @@
 
 React Native for firing actions based on swipe gestures.
 
-![ScreenShot](http://i.imgur.com/5rRYBCG.gifv)
+![ScreenShot](https://raw.github.com/lucasmreis/swipe-actions/master/swipe-actions.gif)

@@ -1,3 +1,1 @@
-module.exports = {
-  SwipeActions: require('./js/swipe-actions')
-};
+module.exports = require('./js/swipe-actions');

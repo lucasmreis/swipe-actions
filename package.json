@@ -13,7 +13,7 @@
     "gestures",
     "gesture"
   ],
-  "version": "0.0.2",
+  "version": "1.0.0",
   "main": "index.js",
   "description": "React Native component for firing actions based on swipe gestures",
   "peerDependencies": {

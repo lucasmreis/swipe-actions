@@ -3,10 +3,15 @@
   "author": "Lucas Reis",
   "keywords": [
     "react",
+    "react-native",
     "react-component",
+    "ios",
+    "android",
     "actions",
+    "action",
     "swipe",
-    "gestures"
+    "gestures",
+    "gesture"
   ],
   "version": "0.0.2",
   "main": "index.js",

@@ -33,10 +33,10 @@ export default React.createClass({
   displayName: 'SwipeActions',
   propTypes: {
     children: React.PropTypes.node.isRequired,
-    upperAction: React.PropTypes.func.isRequired,
-    lowerAction: React.PropTypes.func.isRequired,
-    upperNode: React.PropTypes.node.isRequired,
-    lowerNode: React.PropTypes.node.isRequired
+    upperAction: React.PropTypes.func,
+    lowerAction: React.PropTypes.func,
+    upperNode: React.PropTypes.node,
+    lowerNode: React.PropTypes.node
   },
   getInitialState() {
     return {
@@ -44,6 +44,14 @@ export default React.createClass({
     };
   },
   componentWillMount() {
+    const upperAction = this.props.upperAction
+      ? this.props.upperAction
+      : () => {};
+
+    const lowerAction = this.props.lowerAction
+      ? this.props.lowerAction
+      : () => {};
+
     this.panResponder = PanResponder.create({
       onStartShouldSetPanResponder: () => true,
       onPanResponderMove: (e, gesture) => {
@@ -52,11 +60,13 @@ export default React.createClass({
       },
       onPanResponderRelease: (e, gesture) => {
         const dy = between(gesture.dy, -MAX_Y, MAX_Y);
+
         if (dy === MAX_Y) {
-          this.props.upperAction();
+          upperAction();
         } else if (dy === -MAX_Y) {
-          this.props.lowerAction();
+          lowerAction();
         }
+
         Animated.timing(
           this.state.anim,
           { toValue: 0 }
@@ -64,44 +74,46 @@ export default React.createClass({
       }
     });
   },
-  renderAction(style, node) {
-    return (<Animated.View style={style}>
-      <View style={styles.actionContents}>
-        {node}
-      </View>
-    </Animated.View>);
+  renderAction({ node, topInterpolation, opacityInterpolation }) {
+    if (node) {
+      const s = [styles.actionContainer, {
+        top: this.state.anim.interpolate(topInterpolation),
+        opacity: this.state.anim.interpolate(opacityInterpolation)
+      }];
+
+      return (<Animated.View style={s}>
+        <View style={styles.actionContents}>
+          {node}
+        </View>
+      </Animated.View>);
+    }
+    return null;
   },
   renderUpperAction() {
-    const s = [styles.actionContainer, {
-      top: this.state.anim.interpolate({
+    return this.renderAction({
+      node: this.props.upperNode,
+      topInterpolation: {
         inputRange: [-MAX_Y, 0, MAX_Y],
         outputRange: [-MAX_Y, -(MAX_Y / 2), MAX_Y]
-      }),
-      opacity: this.state.anim.interpolate({
+      },
+      opacityInterpolation: {
         inputRange: [-MAX_Y, 0, 0.8 * MAX_Y, MAX_Y],
         outputRange: [0, 0, 0.5, 1]
-      })
-    }];
-
-    const n = this.props.upperNode;
-
-    return this.renderAction(s, n);
+      }
+    });
   },
   renderLowerAction() {
-    const s = [styles.actionContainer, {
-      top: this.state.anim.interpolate({
+    return this.renderAction({
+      node: this.props.lowerNode,
+      topInterpolation: {
         inputRange: [-MAX_Y, 0, MAX_Y],
         outputRange: [Window.height - 2 * MAX_Y, Window.height + (MAX_Y / 2), Window.height + MAX_Y]
-      }),
-      opacity: this.state.anim.interpolate({
+      },
+      opacityInterpolation: {
         inputRange: [-MAX_Y, 0.8 * -MAX_Y, 0, MAX_Y],
         outputRange: [1, 0.5, 0, 0]
-      })
-    }];
-
-    const n = this.props.lowerNode;
-
-    return this.renderAction(s, n);
+      }
+    });
   },
   render() {
     return (

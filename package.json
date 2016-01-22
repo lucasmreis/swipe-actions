@@ -22,5 +22,10 @@
     "url": "https://github.com/lucasmreis/swipe-actions/issues"
   },
   "homepage": "https://github.com/lucasmreis/swipe-actions#readme",
-  "license": "MIT"
+  "license": "MIT",
+  "marlint": {
+    "rules": {
+      "operator-linebreak": [2, "before"]
+    }
+  }
 }

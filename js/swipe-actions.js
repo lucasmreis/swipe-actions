@@ -94,7 +94,7 @@ export default React.createClass({
       node: this.props.upperNode,
       topInterpolation: {
         inputRange: [-MAX_Y, 0, MAX_Y],
-        outputRange: [-MAX_Y, -(MAX_Y / 2), MAX_Y]
+        outputRange: [-2 * MAX_Y, -2 * MAX_Y, 0]
       },
       opacityInterpolation: {
         inputRange: [-MAX_Y, 0, 0.8 * MAX_Y, MAX_Y],
@@ -107,7 +107,7 @@ export default React.createClass({
       node: this.props.lowerNode,
       topInterpolation: {
         inputRange: [-MAX_Y, 0, MAX_Y],
-        outputRange: [Window.height - 2 * MAX_Y, Window.height + (MAX_Y / 2), Window.height + MAX_Y]
+        outputRange: [Window.height - 2 * MAX_Y, Window.height, Window.height + MAX_Y] //  + (MAX_Y / 2)
       },
       opacityInterpolation: {
         inputRange: [-MAX_Y, 0.8 * -MAX_Y, 0, MAX_Y],

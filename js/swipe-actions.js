@@ -1,10 +1,11 @@
+'use strict';
 import React, { Component } from 'react'
 import {
-    StyleSheet,
-    View,
-    Animated,
-    PanResponder,
-    Dimensions
+  StyleSheet,
+  View,
+  Animated,
+  PanResponder,
+  Dimensions
 } from 'react-native';
 import PropTypes from 'prop-types';
 
